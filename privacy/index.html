@@ -1,732 +1,628 @@
 <!doctype html>
 <html lang="es">
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="theme-color" content="#a855f7" />
-    <title>Política de Privacidad — WingChat</title>
-    <meta name="description"
-        content="Política de Privacidad de WingChat. Conoce qué datos recopilamos, cómo los usamos y cómo puedes ejercer tus derechos." />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="theme-color" content="#a855f7"/>
+  <title>Política de Privacidad — WingChat</title>
+  <meta name="description" content="Política de Privacidad de WingChat. Qué información recopilamos, cómo la usamos y cómo la protegemos." />
 
-    <style>
-        :root {
-            --ink: #0b1020;
-            --muted: #6b7280;
-            --stroke: rgba(15, 23, 42, .10);
-            --stroke2: rgba(168, 85, 247, .22);
-            --card: rgba(255, 255, 255, .72);
-            --card2: rgba(255, 255, 255, .86);
-            --shadow: 0 22px 70px rgba(15, 23, 42, .14);
-            --shadow2: 0 14px 36px rgba(15, 23, 42, .10);
+  <style>
+    :root{
+      --ink:#0b1020;
+      --muted:#6b7280;
+      --stroke: rgba(15, 23, 42, .10);
+      --card: rgba(255,255,255,.72);
+      --shadow: 0 22px 70px rgba(15, 23, 42, .14);
+      --shadow2: 0 14px 36px rgba(15, 23, 42, .10);
 
-            --p1: #a855f7;
-            --p2: #ec4899;
-            --p3: #c084fc;
-            --p4: #f472b6;
+      --p1:#a855f7;
+      --p2:#ec4899;
+      --p3:#c084fc;
+      --p4:#f472b6;
 
-            --r: 26px;
-            --r2: 18px;
-        }
+      --r: 26px;
+      --r2: 18px;
 
-        * {
-            box-sizing: border-box;
-        }
+      --ease: cubic-bezier(.2,.9,.2,1);
+    }
 
-        html,
-        body {
-            height: 100%;
-        }
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 800px at 50% -240px, rgba(168,85,247,.22), transparent 58%),
+        radial-gradient(900px 700px at 80% 10%, rgba(236,72,153,.16), transparent 55%),
+        radial-gradient(800px 650px at 10% 34%, rgba(192,132,252,.16), transparent 55%),
+        linear-gradient(#fff, #fff);
+      overflow-x:hidden;
+    }
 
-        body {
-            margin: 0;
-            font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-            color: var(--ink);
-            background:
-                radial-gradient(1200px 800px at 50% -240px, rgba(168, 85, 247, .22), transparent 58%),
-                radial-gradient(900px 700px at 80% 10%, rgba(236, 72, 153, .16), transparent 55%),
-                radial-gradient(800px 650px at 10% 34%, rgba(192, 132, 252, .16), transparent 55%),
-                linear-gradient(#fff, #fff);
-            overflow-x: hidden;
-        }
+    .wrap{ max-width: 1040px; margin: 0 auto; padding: 26px 18px 54px; }
 
-        .wrap {
-            max-width: 1040px;
-            margin: 0 auto;
-            padding: 26px 18px 54px;
-        }
+    /* topbar */
+    .topbar{
+      position: sticky; top: 14px; z-index: 10;
+      display:flex; align-items:center; justify-content:space-between; gap: 12px;
+      padding: 12px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.68);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow2);
+      transform: translateY(0);
+      animation: dropIn .6s var(--ease) both;
+    }
+    @keyframes dropIn{
+      from{ opacity:0; transform: translateY(-10px); }
+      to{ opacity:1; transform: translateY(0); }
+    }
 
-        /* topbar */
-        .topbar {
-            position: sticky;
-            top: 14px;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            padding: 12px 12px;
-            border-radius: 20px;
-            border: 1px solid var(--stroke);
-            background: rgba(255, 255, 255, .68);
-            backdrop-filter: blur(12px);
-            box-shadow: var(--shadow2);
-        }
+    .brand{
+      display:flex; align-items:center; gap: 12px;
+      text-decoration:none; color: inherit; min-width: 190px;
+    }
+    .logo{
+      width: 40px; height: 40px; border-radius: 14px;
+      background:
+        radial-gradient(60% 60% at 30% 25%, rgba(255,255,255,.85), rgba(255,255,255,0) 55%),
+        linear-gradient(135deg, var(--p1), var(--p2));
+      box-shadow: 0 18px 46px rgba(168,85,247,.30);
+      position: relative;
+      overflow:hidden;
+    }
+    .logo:before{
+      content:"";
+      position:absolute; inset:-20px;
+      background: conic-gradient(from 220deg, rgba(255,255,255,.0), rgba(255,255,255,.45), rgba(255,255,255,.0));
+      animation: spin 7s linear infinite;
+      opacity:.55;
+    }
+    @keyframes spin{ to{ transform: rotate(360deg); } }
 
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: inherit;
-            min-width: 190px;
-        }
+    .brand .t{ display:flex; flex-direction:column; line-height:1.1; }
+    .brand .t b{ font-size: 14px; letter-spacing:.2px; }
+    .brand .t span{ font-size: 12px; color: var(--muted); font-weight: 650; margin-top: 2px; }
 
-        .logo {
-            width: 40px;
-            height: 40px;
-            border-radius: 14px;
-            background:
-                radial-gradient(60% 60% at 30% 25%, rgba(255, 255, 255, .85), rgba(255, 255, 255, 0) 55%),
-                linear-gradient(135deg, var(--p1), var(--p2));
-            box-shadow: 0 18px 46px rgba(168, 85, 247, .30);
-            position: relative;
-            overflow: hidden;
-        }
+    .nav{ display:flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+    .pill{
+      display:inline-flex; align-items:center; gap: 8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(15,23,42,.10);
+      background: rgba(255,255,255,.72);
+      text-decoration:none;
+      color: rgba(11,16,32,.92);
+      font-weight: 850;
+      font-size: 13px;
+      transition: transform .18s var(--ease), box-shadow .18s var(--ease), background .18s var(--ease), border-color .18s var(--ease);
+      user-select:none;
+      will-change: transform;
+    }
+    .pill:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 12px 26px rgba(15,23,42,.12);
+      background: rgba(255,255,255,.92);
+      border-color: rgba(168,85,247,.20);
+    }
+    .pill[aria-current="page"]{
+      border-color: rgba(168,85,247,.35);
+      background: linear-gradient(135deg, rgba(168,85,247,.14), rgba(236,72,153,.12));
+    }
 
-        .logo:before {
-            content: "";
-            position: absolute;
-            inset: -20px;
-            background: conic-gradient(from 220deg, rgba(255, 255, 255, .0), rgba(255, 255, 255, .45), rgba(255, 255, 255, .0));
-            animation: spin 7s linear infinite;
-            opacity: .55;
-        }
+    /* hero */
+    .hero{
+      padding: 26px 8px 6px;
+      text-align:center;
+      animation: fadeUp .7s var(--ease) .08s both;
+    }
+    @keyframes fadeUp{
+      from{ opacity:0; transform: translateY(10px); }
+      to{ opacity:1; transform: translateY(0); }
+    }
 
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
+    .bubbles{
+      height: 160px;
+      margin: 10px auto 10px;
+      position: relative;
+      display:flex; justify-content:center; align-items:center;
+    }
+    .chip{
+      position:absolute;
+      height: 40px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(15,23,42,.10);
+      background: rgba(255,255,255,.78);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 14px 34px rgba(15,23,42,.08);
+      display:flex; align-items:center; justify-content:center;
+      font-size: 18px;
+      transition: transform .20s var(--ease);
+      will-change: transform;
+    }
+    .chip.c1{ top: 0; left: 50%; transform: translateX(-110%); }
+    .chip.c2{ top: 24px; left: 50%; transform: translateX(40%); background: rgba(255, 240, 247, .78); }
+    .chip.c3{ top: 78px; left: 50%; transform: translateX(-120%); background: rgba(245, 240, 255, .78); }
+    .chip.c4{ top: 102px; left: 50%; transform: translateX(35%); background: rgba(255, 240, 247, .78); }
 
-        .brand .t {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.1;
-        }
+    .orb{
+      width: 74px; height: 74px;
+      border-radius: 999px;
+      background:
+        radial-gradient(70% 70% at 30% 25%, rgba(255,255,255,.85), rgba(255,255,255,0) 55%),
+        linear-gradient(135deg, var(--p1), var(--p2));
+      box-shadow: 0 26px 70px rgba(168,85,247,.30);
+      display:flex; align-items:center; justify-content:center;
+      position: relative;
+      overflow:hidden;
+      animation: pulseGlow 4.8s ease-in-out infinite;
+    }
+    @keyframes pulseGlow{
+      0%,100%{ box-shadow: 0 26px 70px rgba(168,85,247,.30); }
+      50%{ box-shadow: 0 30px 85px rgba(236,72,153,.26); }
+    }
+    .orb:after{
+      content:"";
+      position:absolute;
+      inset:-30px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.35), rgba(255,255,255,0) 55%);
+      transform: rotate(18deg);
+      opacity:.9;
+    }
+    .orb svg{ position:relative; z-index: 1; filter: drop-shadow(0 8px 18px rgba(15,23,42,.20)); }
 
-        .brand .t b {
-            font-size: 14px;
-            letter-spacing: .2px;
-        }
+    .title{
+      margin: 12px 0 0;
+      font-size: clamp(24px, 3.2vw, 38px);
+      font-weight: 950;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, rgba(168,85,247,1), rgba(236,72,153,1));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .subtitle{
+      margin: 10px auto 0;
+      max-width: 780px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+    .kicker{
+      margin-top: 12px;
+      display:inline-flex; align-items:center; gap: 8px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(168,85,247,.25);
+      background: linear-gradient(135deg, rgba(168,85,247,.12), rgba(236,72,153,.10));
+      color: rgba(11,16,32,.86);
+      font-weight: 900;
+      font-size: 12px;
+    }
 
-        .brand .t span {
-            font-size: 12px;
-            color: var(--muted);
-            font-weight: 650;
-            margin-top: 2px;
-        }
+    /* content grid */
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .card{
+      border-radius: var(--r);
+      border: 1px solid rgba(15,23,42,.10);
+      background: var(--card);
+      box-shadow: var(--shadow2);
+      backdrop-filter: blur(12px);
+      padding: 16px;
+      position: relative;
+      overflow:hidden;
 
-        .nav {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-        }
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity .6s var(--ease), transform .6s var(--ease);
+    }
+    .card.in{
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .card:before{
+      content:"";
+      position:absolute; inset:-120px;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(168,85,247,.10), transparent 40%),
+        radial-gradient(circle at 90% 20%, rgba(236,72,153,.08), transparent 45%);
+      pointer-events:none;
+    }
+    .card > *{ position:relative; z-index:1; }
 
-        .pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 12px;
-            border-radius: 999px;
-            border: 1px solid rgba(15, 23, 42, .10);
-            background: rgba(255, 255, 255, .72);
-            text-decoration: none;
-            color: rgba(11, 16, 32, .92);
-            font-weight: 850;
-            font-size: 13px;
-            transition: transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
-            user-select: none;
-        }
+    .h2{
+      display:flex; align-items:center; gap: 10px;
+      margin: 0 0 10px;
+      font-size: 16px;
+      font-weight: 950;
+      letter-spacing: -0.01em;
+    }
+    .icon{
+      width: 36px; height: 36px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(168,85,247,.18), rgba(236,72,153,.14));
+      border: 1px solid rgba(168,85,247,.22);
+      display:flex; align-items:center; justify-content:center;
+      box-shadow: 0 12px 26px rgba(168,85,247,.12);
+    }
 
-        .pill:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 12px 26px rgba(15, 23, 42, .12);
-            background: rgba(255, 255, 255, .92);
-            border-color: rgba(168, 85, 247, .20);
-        }
+    p, li{ margin: 0; color: rgba(11,16,32,.82); font-size: 14px; line-height: 1.75; }
+    ul{ margin: 10px 0 0 20px; }
 
-        .pill[aria-current="page"] {
-            border-color: rgba(168, 85, 247, .35);
-            background: linear-gradient(135deg, rgba(168, 85, 247, .14), rgba(236, 72, 153, .12));
-        }
+    .divider{
+      height: 1px;
+      background: linear-gradient(90deg, rgba(168,85,247,.0), rgba(168,85,247,.35), rgba(236,72,153,.25), rgba(236,72,153,.0));
+      margin: 12px 0 10px;
+      border-radius: 999px;
+    }
 
-        /* hero like the app */
-        .hero {
-            padding: 26px 8px 6px;
-            text-align: center;
-        }
+    details{
+      border-radius: var(--r2);
+      border: 1px solid rgba(15,23,42,.10);
+      background: rgba(255,255,255,.72);
+      padding: 12px 12px;
+      box-shadow: 0 12px 26px rgba(15,23,42,.06);
+    }
+    details + details{ margin-top: 10px; }
+    summary{
+      cursor:pointer;
+      font-weight: 950;
+      font-size: 14px;
+      list-style:none;
+      display:flex; align-items:center; justify-content:space-between; gap: 12px;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    .chev{
+      width: 28px; height: 28px;
+      border-radius: 999px;
+      border: 1px solid rgba(15,23,42,.12);
+      background: rgba(255,255,255,.75);
+      display:flex; align-items:center; justify-content:center;
+      transition: transform .15s var(--ease);
+      flex: 0 0 auto;
+    }
+    details[open] .chev{ transform: rotate(180deg); }
+    .content{ padding-top: 10px; }
 
-        .bubbles {
-            height: 160px;
-            margin: 10px auto 10px;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    .actions{ display:flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+    .btn{
+      border: 0;
+      cursor:pointer;
+      font-weight: 950;
+      letter-spacing: .2px;
+      padding: 12px 14px;
+      border-radius: 999px;
+      display:inline-flex; align-items:center; gap: 10px;
+      text-decoration:none;
+      user-select:none;
+      transition: transform .18s var(--ease), box-shadow .18s var(--ease), filter .18s var(--ease);
+      will-change: transform;
+    }
+    .btn-primary{
+      color:#fff;
+      background: linear-gradient(135deg, var(--p1), var(--p2));
+      box-shadow: 0 20px 46px rgba(168,85,247,.22);
+    }
+    .btn-primary:hover{ transform: translateY(-1px); filter: brightness(1.02); }
+    .btn-ghost{
+      color: rgba(11,16,32,.90);
+      background: rgba(255,255,255,.74);
+      border: 1px solid rgba(15,23,42,.10);
+      box-shadow: 0 12px 28px rgba(15,23,42,.10);
+    }
+    .btn-ghost:hover{ transform: translateY(-1px); }
 
-        .chip {
-            position: absolute;
-            height: 40px;
-            padding: 0 18px;
-            border-radius: 999px;
-            border: 1px solid rgba(15, 23, 42, .10);
-            background: rgba(255, 255, 255, .78);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 14px 34px rgba(15, 23, 42, .08);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-        }
+    .footer{
+      margin-top: 18px;
+      text-align:center;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+      padding: 16px 6px 0;
+      animation: fadeUp .7s var(--ease) .12s both;
+    }
+    .footer a{
+      color: rgba(11,16,32,.76);
+      text-decoration:none;
+      border-bottom: 1px dashed rgba(11,16,32,.28);
+    }
 
-        .chip.c1 {
-            top: 0;
-            left: 50%;
-            transform: translateX(-110%);
-        }
+    .toast{
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      padding: 12px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(15,23,42,.12);
+      background: rgba(255,255,255,.86);
+      box-shadow: 0 22px 70px rgba(15,23,42,.18);
+      backdrop-filter: blur(12px);
+      font-weight: 950;
+      font-size: 13px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .18s var(--ease), transform .18s var(--ease);
+    }
+    .toast.show{ opacity: 1; transform: translateX(-50%) translateY(-2px); }
 
-        .chip.c2 {
-            top: 24px;
-            left: 50%;
-            transform: translateX(40%);
-            background: rgba(255, 240, 247, .78);
-        }
-
-        .chip.c3 {
-            top: 78px;
-            left: 50%;
-            transform: translateX(-120%);
-            background: rgba(245, 240, 255, .78);
-        }
-
-        .chip.c4 {
-            top: 102px;
-            left: 50%;
-            transform: translateX(35%);
-            background: rgba(255, 240, 247, .78);
-        }
-
-        .orb {
-            width: 74px;
-            height: 74px;
-            border-radius: 999px;
-            background:
-                radial-gradient(70% 70% at 30% 25%, rgba(255, 255, 255, .85), rgba(255, 255, 255, 0) 55%),
-                linear-gradient(135deg, var(--p1), var(--p2));
-            box-shadow: 0 26px 70px rgba(168, 85, 247, .30);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .orb:after {
-            content: "";
-            position: absolute;
-            inset: -30px;
-            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, .35), rgba(255, 255, 255, 0) 55%);
-            transform: rotate(18deg);
-            opacity: .9;
-        }
-
-        .orb svg {
-            position: relative;
-            z-index: 1;
-            filter: drop-shadow(0 8px 18px rgba(15, 23, 42, .20));
-        }
-
-        .title {
-            margin: 12px 0 0;
-            font-size: clamp(24px, 3.2vw, 38px);
-            font-weight: 950;
-            letter-spacing: -0.03em;
-            background: linear-gradient(135deg, rgba(168, 85, 247, 1), rgba(236, 72, 153, 1));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .subtitle {
-            margin: 10px auto 0;
-            max-width: 760px;
-            color: var(--muted);
-            font-size: 14px;
-            line-height: 1.7;
-        }
-
-        .kicker {
-            margin-top: 12px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 9px 12px;
-            border-radius: 999px;
-            border: 1px solid rgba(168, 85, 247, .25);
-            background: linear-gradient(135deg, rgba(168, 85, 247, .12), rgba(236, 72, 153, .10));
-            color: rgba(11, 16, 32, .86);
-            font-weight: 900;
-            font-size: 12px;
-        }
-
-        /* sections */
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 14px;
-            margin-top: 18px;
-        }
-
-        .card {
-            border-radius: var(--r);
-            border: 1px solid rgba(15, 23, 42, .10);
-            background: var(--card);
-            box-shadow: var(--shadow2);
-            backdrop-filter: blur(12px);
-            padding: 16px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card:before {
-            content: "";
-            position: absolute;
-            inset: -120px;
-            background: radial-gradient(circle at 10% 10%, rgba(168, 85, 247, .10), transparent 40%),
-                radial-gradient(circle at 90% 20%, rgba(236, 72, 153, .08), transparent 45%);
-            pointer-events: none;
-        }
-
-        .card>* {
-            position: relative;
-            z-index: 1;
-        }
-
-        .h2 {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 0 0 10px;
-            font-size: 16px;
-            font-weight: 950;
-            letter-spacing: -0.01em;
-        }
-
-        .icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 14px;
-            background: linear-gradient(135deg, rgba(168, 85, 247, .18), rgba(236, 72, 153, .14));
-            border: 1px solid rgba(168, 85, 247, .22);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 12px 26px rgba(168, 85, 247, .12);
-        }
-
-        p,
-        li {
-            margin: 0;
-            color: rgba(11, 16, 32, .82);
-            font-size: 14px;
-            line-height: 1.75;
-        }
-
-        ul {
-            margin: 10px 0 0 20px;
-        }
-
-        .divider {
-            height: 1px;
-            background: linear-gradient(90deg, rgba(168, 85, 247, .0), rgba(168, 85, 247, .35), rgba(236, 72, 153, .25), rgba(236, 72, 153, .0));
-            margin: 12px 0 10px;
-            border-radius: 999px;
-        }
-
-        /* accordion */
-        details {
-            border-radius: var(--r2);
-            border: 1px solid rgba(15, 23, 42, .10);
-            background: rgba(255, 255, 255, .72);
-            padding: 12px 12px;
-            box-shadow: 0 12px 26px rgba(15, 23, 42, .06);
-        }
-
-        details+details {
-            margin-top: 10px;
-        }
-
-        summary {
-            cursor: pointer;
-            font-weight: 950;
-            font-size: 14px;
-            list-style: none;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-        }
-
-        summary::-webkit-details-marker {
-            display: none;
-        }
-
-        .chev {
-            width: 28px;
-            height: 28px;
-            border-radius: 999px;
-            border: 1px solid rgba(15, 23, 42, .12);
-            background: rgba(255, 255, 255, .75);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform .15s ease;
-            flex: 0 0 auto;
-        }
-
-        details[open] .chev {
-            transform: rotate(180deg);
-        }
-
-        .content {
-            padding-top: 10px;
-        }
-
-        /* actions */
-        .actions {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-top: 12px;
-        }
-
-        .btn {
-            border: 0;
-            cursor: pointer;
-            font-weight: 950;
-            letter-spacing: .2px;
-            padding: 12px 14px;
-            border-radius: 999px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            user-select: none;
-            transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
-        }
-
-        .btn-primary {
-            color: #fff;
-            background: linear-gradient(135deg, var(--p1), var(--p2));
-            box-shadow: 0 20px 46px rgba(168, 85, 247, .22);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-1px);
-            filter: brightness(1.02);
-        }
-
-        .btn-ghost {
-            color: rgba(11, 16, 32, .90);
-            background: rgba(255, 255, 255, .74);
-            border: 1px solid rgba(15, 23, 42, .10);
-            box-shadow: 0 12px 28px rgba(15, 23, 42, .10);
-        }
-
-        .btn-ghost:hover {
-            transform: translateY(-1px);
-        }
-
-        /* footer */
-        .footer {
-            margin-top: 18px;
-            text-align: center;
-            color: var(--muted);
-            font-size: 12px;
-            line-height: 1.7;
-            padding: 16px 6px 0;
-        }
-
-        .footer a {
-            color: rgba(11, 16, 32, .76);
-            text-decoration: none;
-            border-bottom: 1px dashed rgba(11, 16, 32, .28);
-        }
-
-        /* toast */
-        .toast {
-            position: fixed;
-            left: 50%;
-            bottom: 18px;
-            transform: translateX(-50%);
-            padding: 12px 14px;
-            border-radius: 999px;
-            border: 1px solid rgba(15, 23, 42, .12);
-            background: rgba(255, 255, 255, .86);
-            box-shadow: 0 22px 70px rgba(15, 23, 42, .18);
-            backdrop-filter: blur(12px);
-            font-weight: 950;
-            font-size: 13px;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity .18s ease, transform .18s ease;
-        }
-
-        .toast.show {
-            opacity: 1;
-            transform: translateX(-50%) translateY(-2px);
-        }
-
-        @media (min-width: 900px) {
-            .grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .wide {
-                grid-column: 1 / -1;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .logo:before {
-                animation: none;
-            }
-
-            .btn,
-            .pill {
-                transition: none;
-            }
-        }
-    </style>
+    @media (min-width: 900px){
+      .grid{ grid-template-columns: 1fr 1fr; }
+      .wide{ grid-column: 1 / -1; }
+    }
+    @media (prefers-reduced-motion: reduce){
+      .logo:before, .orb{ animation:none; }
+      .pill,.btn,.chip,.card{ transition:none !important; }
+      .topbar,.hero,.footer{ animation:none !important; }
+    }
+  </style>
 </head>
 
 <body>
-    <div class="wrap">
-        <header class="topbar">
-            <a class="brand" href="../privacy/">
-                <div class="logo" aria-hidden="true"></div>
-                <div class="t">
-                    <b>WingChat</b>
-                    <span>Centro legal</span>
-                </div>
-            </a>
+  <div class="wrap">
+    <header class="topbar">
+      <a class="brand" href="../privacy/">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="t">
+          <b>WingChat</b>
+          <span>Centro legal</span>
+        </div>
+      </a>
 
-            <nav class="nav" aria-label="Navegación">
-                <a class="pill" aria-current="page" href="../privacy/">🔒 Privacidad</a>
-                <a class="pill" href="../terms/">📜 Términos</a>
-                <a class="pill" href="../support/">💬 Soporte</a>
-            </nav>
-        </header>
+      <nav class="nav" aria-label="Navegación">
+        <a class="pill" aria-current="page" href="../privacy/">🔒 Privacidad</a>
+        <a class="pill" href="../terms/">📜 Términos</a>
+        <a class="pill" href="../support/">💬 Soporte</a>
+      </nav>
+    </header>
 
-        <section class="hero">
-            <div class="bubbles" aria-hidden="true">
-                <div class="chip c1">💬</div>
-                <div class="chip c2">😍</div>
-                <div class="chip c3">✨</div>
-                <div class="chip c4">❤️</div>
+    <section class="hero">
+      <div class="bubbles" aria-hidden="true" id="bubbles">
+        <div class="chip c1">💬</div>
+        <div class="chip c2">😍</div>
+        <div class="chip c3">✨</div>
+        <div class="chip c4">❤️</div>
 
-                <div class="orb" aria-hidden="true" title="WingChat">
-                    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path
-                            d="M12 3C6.477 3 2 6.93 2 11.78c0 2.64 1.36 5.02 3.55 6.64L5 21l3.05-1.62c1.2.34 2.52.52 3.95.52 5.523 0 10-3.93 10-8.78S17.523 3 12 3Z"
-                            stroke="white" stroke-width="2" stroke-linejoin="round" />
-                    </svg>
-                </div>
-            </div>
+        <div class="orb" aria-hidden="true" title="WingChat">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 3C6.477 3 2 6.93 2 11.78c0 2.64 1.36 5.02 3.55 6.64L5 21l3.05-1.62c1.2.34 2.52.52 3.95.52 5.523 0 10-3.93 10-8.78S17.523 3 12 3Z"
+                  stroke="white" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
 
-            <h1 class="title">Política de Privacidad</h1>
-            <div class="kicker">Última actualización: 20 de diciembre de 2025</div>
-            <p class="subtitle">
-                WingChat (“nosotros”) ofrece sugerencias de respuestas, análisis y contenidos a partir de texto e
-                imágenes proporcionados por el usuario.
-                Aquí va el mapa: qué entra, qué sale, y cómo lo protegemos.
+      <h1 class="title">Política de Privacidad</h1>
+      <div class="kicker">Última actualización: 31 de diciembre de 2025</div>
+      <p class="subtitle">
+        WingChat (“nosotros”) ofrece una plataforma para generar sugerencias de respuestas, análisis y contenido a partir de texto e imágenes proporcionados por el usuario.
+        Esta Política explica qué información recopilamos, cómo la usamos y cómo la protegemos.
+      </p>
+    </section>
+
+    <main class="grid">
+      <article class="card wide">
+        <div class="h2"><span class="icon">🧾</span> 1. Información que recopilamos</div>
+
+        <details open>
+          <summary>a) Cuenta y autenticación (Firebase / Google) <span class="chev">⌄</span></summary>
+          <div class="content">
+            <p>Si inicias sesión con Google mediante Firebase Authentication, podemos recibir y almacenar:</p>
+            <ul>
+              <li>correo electrónico,</li>
+              <li>nombre y foto (si Google los provee),</li>
+              <li>identificador único de usuario (uid).</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>b) Información de uso y diagnósticos <span class="chev">⌄</span></summary>
+          <div class="content">
+            <p>Podemos registrar información técnica necesaria para operar y mejorar el servicio, por ejemplo:</p>
+            <ul>
+              <li>fecha/hora de uso,</li>
+              <li>endpoints utilizados,</li>
+              <li>métricas de rendimiento,</li>
+              <li>logs de errores y eventos de seguridad.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>c) Contenido proporcionado por el usuario (texto e imágenes) <span class="chev">⌄</span></summary>
+          <div class="content">
+            <p>WingChat permite:</p>
+            <ul>
+              <li>pegar texto (chats, historias, descripciones),</li>
+              <li>subir imágenes para análisis.</li>
+            </ul>
+            <div class="divider"></div>
+            <p style="color: rgba(11,16,32,.78); font-size:13px;">
+              Ese contenido puede contener datos personales tuyos o de terceros. Recomendamos no incluir información sensible como contraseñas,
+              direcciones exactas, datos bancarios, documentos oficiales, información médica o cualquier dato que no quieras que sea procesado por
+              servicios externos para generar resultados.
             </p>
-        </section>
+          </div>
+        </details>
 
-        <main class="grid">
-            <article class="card wide">
-                <div class="h2"><span class="icon">🧾</span> 1. Datos que recopilamos</div>
+        <details>
+          <summary>d) Pagos y Premium (MercadoPago) <span class="chev">⌄</span></summary>
+          <div class="content">
+            <p>Los pagos se procesan a través de MercadoPago. WingChat no almacena datos de tarjeta.</p>
+            <p style="margin-top:10px;">Podemos almacenar información asociada a la compra o suscripción para habilitar Premium, por ejemplo:</p>
+            <ul>
+              <li>estado del pago / suscripción,</li>
+              <li>identificadores (ej. <strong>payment_id</strong>, <strong>subscription_id</strong> o equivalentes),</li>
+              <li>plan elegido,</li>
+              <li>vigencia (ej. “premiumUntil” / próxima fecha de pago),</li>
+              <li>referencias técnicas para conciliación (ej. “clientRef” o “external_reference”).</li>
+            </ul>
+          </div>
+        </details>
+      </article>
 
-                <details open>
-                    <summary>a) Cuenta y autenticación <span class="chev">⌄</span></summary>
-                    <div class="content">
-                        <p>
-                            Al iniciar sesión con Google mediante Firebase Authentication, podemos recibir: correo
-                            electrónico, nombre (si Google lo provee),
-                            foto (si Google la provee) y un identificador único de usuario (uid).
-                        </p>
-                    </div>
-                </details>
+      <article class="card">
+        <div class="h2"><span class="icon">⚙️</span> 2. Cómo usamos la información</div>
+        <p>Usamos la información para:</p>
+        <ul>
+          <li>autenticar tu sesión y operar tu cuenta,</li>
+          <li>generar respuestas y análisis usando servicios de IA,</li>
+          <li>activar y gestionar acceso Premium (estado, vigencia, sincronización y cancelación),</li>
+          <li>brindar soporte al usuario y resolver incidencias,</li>
+          <li>seguridad, prevención de fraude y mejora del producto.</li>
+        </ul>
+      </article>
 
-                <details>
-                    <summary>b) Información de uso <span class="chev">⌄</span></summary>
-                    <div class="content">
-                        <p>
-                            Podemos registrar información técnica básica para operar y mejorar el servicio (por ejemplo:
-                            fecha/hora de uso, endpoints usados,
-                            métricas de funcionamiento, logs de errores).
-                        </p>
-                    </div>
-                </details>
+      <article class="card">
+        <div class="h2"><span class="icon">🤝</span> 3. Proveedores y terceros</div>
+        <p>Podemos compartir datos estrictamente necesarios con:</p>
+        <ul>
+          <li><strong>Firebase (Google):</strong> autenticación y servicios backend.</li>
+          <li><strong>OpenAI:</strong> procesamiento del contenido (texto e imágenes) para generar respuestas/análisis.</li>
+          <li><strong>MercadoPago:</strong> procesamiento de pagos y notificaciones (webhooks/estado de suscripción).</li>
+        </ul>
+        <div class="divider"></div>
+        <p style="color: rgba(11,16,32,.78); font-size:13px;">Cada proveedor opera bajo sus propias políticas y términos.</p>
+      </article>
 
-                <details>
-                    <summary>c) Contenido proporcionado por el usuario <span class="chev">⌄</span></summary>
-                    <div class="content">
-                        <p>
-                            El usuario puede pegar texto (chats, historias, descripciones) o subir imágenes para
-                            análisis. Ese contenido puede contener datos personales de terceros.
-                            Recomendamos no incluir información sensible (direcciones, contraseñas, datos bancarios,
-                            etc.).
-                        </p>
-                    </div>
-                </details>
+      <article class="card">
+        <div class="h2"><span class="icon">🕒</span> 4. Conservación de información</div>
+        <p>Conservamos la información necesaria para operar el servicio y cumplir obligaciones.</p>
+        <ul>
+          <li>La información de Premium puede conservarse para reconocer tu compra en múltiples dispositivos.</li>
+          <li>Los logs técnicos se conservan el tiempo razonable para seguridad y diagnóstico.</li>
+        </ul>
+      </article>
 
-                <details>
-                    <summary>d) Pagos <span class="chev">⌄</span></summary>
-                    <div class="content">
-                        <p>
-                            Los pagos se procesan a través de MercadoPago. WingChat no almacena datos de tarjeta.
-                            Podemos almacenar información asociada a la compra para habilitar Premium
-                            (por ejemplo: estado de pago, identificador de pago, plan y vigencia).
-                        </p>
-                    </div>
-                </details>
+      <article class="card">
+        <div class="h2"><span class="icon">🛡️</span> 5. Seguridad</div>
+        <p>
+          Aplicamos medidas técnicas razonables para proteger la información.
+          Aun así, ningún sistema es infalible; el uso de internet implica riesgos.
+        </p>
+      </article>
 
-                <div class="divider"></div>
-                <p style="color: rgba(11,16,32,.78); font-size:13px;">
-                    Nota: si pegas conversaciones reales, evita datos ultra sensibles. WingChat es un copiloto; tú
-                    sigues en la cabina.
-                </p>
-            </article>
+      <article class="card wide">
+        <div class="h2"><span class="icon">📬</span> 6. Derechos y contacto</div>
+        <p>
+          Puedes solicitar acceso, corrección o eliminación de tu información escribiendo a:
+          <strong id="emailText">tristanvalentinarzatecayetano@gmail.com</strong>
+        </p>
 
-            <article class="card">
-                <div class="h2"><span class="icon">⚙️</span> 2. Cómo usamos la información</div>
-                <p>Usamos la información para:</p>
-                <ul>
-                    <li>Autenticar tu sesión y operar tu cuenta.</li>
-                    <li>Generar respuestas y análisis usando servicios de IA.</li>
-                    <li>Activar y gestionar el acceso Premium (vigencia y estado).</li>
-                    <li>Soporte al usuario y resolución de problemas.</li>
-                    <li>Seguridad, prevención de fraude y mejora del producto.</li>
-                </ul>
-            </article>
+        <div class="actions">
+          <button class="btn btn-primary" id="copyEmailBtn" type="button">✨ Copiar correo</button>
+          <a class="btn btn-ghost" href="mailto:tristanvalentinarzatecayetano@gmail.com?subject=WingChat%20—%20Privacidad%20(derechos%20del%20usuario)">📩 Enviar email</a>
+          <a class="btn btn-ghost" href="../support/">💬 Ir a Soporte</a>
+        </div>
 
-            <article class="card">
-                <div class="h2"><span class="icon">🤝</span> 3. Proveedores y terceros</div>
-                <p>Podemos compartir datos estrictamente necesarios con:</p>
-                <ul>
-                    <li><strong>Firebase (Google):</strong> autenticación y servicios de backend.</li>
-                    <li><strong>OpenAI:</strong> procesamiento del contenido para generar respuestas/análisis (texto e
-                        imágenes).</li>
-                    <li><strong>MercadoPago:</strong> procesamiento de pagos y notificaciones (webhooks).</li>
-                </ul>
-                <div class="divider"></div>
-                <p style="color: rgba(11,16,32,.78); font-size:13px;">
-                    Cada proveedor opera bajo sus propias políticas y términos.
-                </p>
-            </article>
+        <details style="margin-top: 12px;">
+          <summary>7. Cambios a esta política <span class="chev">⌄</span></summary>
+          <div class="content">
+            <p>Podemos actualizar esta Política. La versión vigente estará disponible dentro del sitio / aplicación.</p>
+          </div>
+        </details>
+      </article>
+    </main>
 
-            <article class="card">
-                <div class="h2"><span class="icon">🕒</span> 4. Conservación</div>
-                <p>
-                    Conservamos la información necesaria para operar el servicio y cumplir obligaciones. La vigencia de
-                    Premium se conserva para poder reconocer tu compra en múltiples dispositivos.
-                    Los logs técnicos se conservan el tiempo necesario para seguridad y diagnóstico.
-                </p>
-            </article>
+    <footer class="footer">
+      <div>⚠️ Esta app es de entretenimiento y no sustituye consejo psicológico o profesional.</div>
+      <div style="margin-top:8px;">
+        <a href="../privacy/">Política de Privacidad</a> &nbsp;·&nbsp;
+        <a href="../terms/">Términos de Uso</a> &nbsp;·&nbsp;
+        <a href="../support/">Soporte</a>
+      </div>
+      <div style="margin-top:10px; opacity:.92;">
+        WingChat — claridad legal, estética suave y cero fricción.
+      </div>
+    </footer>
+  </div>
 
-            <article class="card">
-                <div class="h2"><span class="icon">🛡️</span> 5. Seguridad</div>
-                <p>
-                    Aplicamos medidas técnicas razonables para proteger la información. Ningún sistema es infalible; el
-                    uso de internet implica riesgos.
-                </p>
-            </article>
+  <div class="toast" id="toast">Copiado ✅</div>
 
-            <article class="card wide">
-                <div class="h2"><span class="icon">📬</span> 6. Derechos y contacto</div>
-                <p>
-                    Puedes solicitar acceso, corrección o eliminación de tu información escribiendo a:
-                    <strong id="emailText">tristanvalentinarzatecayetano@gmail.com</strong>
-                </p>
+  <script>
+    (function () {
+      const email = "tristanvalentinarzatecayetano@gmail.com";
+      const btn = document.getElementById("copyEmailBtn");
+      const toast = document.getElementById("toast");
+      const bubbles = document.getElementById("bubbles");
+      const chips = bubbles ? bubbles.querySelectorAll(".chip") : [];
 
-                <div class="actions">
-                    <button class="btn btn-primary" id="copyEmailBtn" type="button">✨ Copiar correo</button>
-                    <a class="btn btn-ghost"
-                        href="mailto:tristanvalentinarzatecayetano@gmail.com?subject=WingChat%20—%20Privacidad%20(derechos%20del%20usuario)">📩
-                        Enviar email</a>
-                    <a class="btn btn-ghost" href="../support/">💬 Ir a Soporte</a>
-                </div>
+      // Reveal cards on scroll
+      const cards = Array.from(document.querySelectorAll(".card"));
+      const prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-                <details style="margin-top: 12px;">
-                    <summary>7. Cambios a esta política <span class="chev">⌄</span></summary>
-                    <div class="content">
-                        <p>Podemos actualizar esta Política. La versión vigente estará disponible dentro del sitio.</p>
-                    </div>
-                </details>
-            </article>
-        </main>
+      if (!prefersReduced && "IntersectionObserver" in window) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach(e => {
+            if (e.isIntersecting) e.target.classList.add("in");
+          });
+        }, { threshold: 0.12 });
+        cards.forEach(c => io.observe(c));
+      } else {
+        cards.forEach(c => c.classList.add("in"));
+      }
 
-        <footer class="footer">
-            <div>⚠️ Esta app es de entretenimiento y no sustituye consejo psicológico o profesional.</div>
-            <div style="margin-top:8px;">
-                <a href="../privacy/">Política de Privacidad</a> &nbsp;·&nbsp;
-                <a href="../terms/">Términos de Uso</a> &nbsp;·&nbsp;
-                <a href="../support/">Soporte</a>
-            </div>
-            <div style="margin-top:10px; opacity:.92;">
-                WingChat — claridad legal, estética suave y cero fricción.
-            </div>
-        </footer>
-    </div>
+      // Toast
+      function showToast(msg){
+        if (!toast) return;
+        toast.textContent = msg;
+        toast.classList.add("show");
+        window.clearTimeout(showToast._t);
+        showToast._t = window.setTimeout(() => toast.classList.remove("show"), 1400);
+      }
 
-    <div class="toast" id="toast">Copiado ✅</div>
+      // Copy email
+      if (btn) {
+        btn.addEventListener("click", async () => {
+          try {
+            await navigator.clipboard.writeText(email);
+            showToast("Correo copiado ✅");
+          } catch (e) {
+            const ta = document.createElement("textarea");
+            ta.value = email;
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand("copy");
+            ta.remove();
+            showToast("Correo copiado ✅");
+          }
+        });
+      }
 
-    <script>
-        (function () {
-            const email = "tristanvalentinarzatecayetano@gmail.com";
-            const btn = document.getElementById("copyEmailBtn");
-            const toast = document.getElementById("toast");
+      // Micro-parallax on desktop (super suave)
+      if (!prefersReduced && bubbles && chips.length) {
+        let raf = null;
+        bubbles.addEventListener("mousemove", (ev) => {
+          const rect = bubbles.getBoundingClientRect();
+          const x = (ev.clientX - rect.left) / rect.width - 0.5;
+          const y = (ev.clientY - rect.top) / rect.height - 0.5;
 
-            function showToast(msg) {
-                if (!toast) return;
-                toast.textContent = msg;
-                toast.classList.add("show");
-                window.clearTimeout(showToast._t);
-                showToast._t = window.setTimeout(() => toast.classList.remove("show"), 1400);
-            }
+          if (raf) cancelAnimationFrame(raf);
+          raf = requestAnimationFrame(() => {
+            chips.forEach((chip, i) => {
+              const depth = (i + 1) * 2.2; // 2.2, 4.4, 6.6...
+              chip.style.transform = chip.classList.contains("c1") ? `translateX(-110%) translate(${x*depth}px, ${y*depth}px)` :
+                                 chip.classList.contains("c2") ? `translateX(40%) translate(${x*depth}px, ${y*depth}px)` :
+                                 chip.classList.contains("c3") ? `translateX(-120%) translate(${x*depth}px, ${y*depth}px)` :
+                                                                 `translateX(35%) translate(${x*depth}px, ${y*depth}px)`;
+            });
+          });
+        });
 
-            if (btn) {
-                btn.addEventListener("click", async () => {
-                    try {
-                        await navigator.clipboard.writeText(email);
-                        showToast("Correo copiado ✅");
-                    } catch (e) {
-                        const ta = document.createElement("textarea");
-                        ta.value = email;
-                        document.body.appendChild(ta);
-                        ta.select();
-                        document.execCommand("copy");
-                        ta.remove();
-                        showToast("Correo copiado ✅");
-                    }
-                });
-            }
-        })();
-    </script>
+        bubbles.addEventListener("mouseleave", () => {
+          chips.forEach(chip => chip.style.transform = "");
+        });
+      }
+    })();
+  </script>
 </body>
-
 </html>
