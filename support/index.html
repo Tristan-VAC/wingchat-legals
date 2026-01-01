@@ -1,521 +1,426 @@
 <!doctype html>
 <html lang="es">
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="theme-color" content="#a855f7" />
-    <title>Soporte — WingChat</title>
-    <meta name="description" content="Soporte y contacto de WingChat. Reporta problemas de Premium o dudas de uso." />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="theme-color" content="#a855f7"/>
+  <title>Soporte — WingChat</title>
+  <meta name="description" content="Soporte y contacto de WingChat. Reporta problemas de Premium, pagos o suscripción." />
 
-    <style>
-        :root {
-            --ink: #0b1020;
-            --muted: #6b7280;
-            --stroke: rgba(15, 23, 42, .10);
-            --card: rgba(255, 255, 255, .72);
-            --shadow2: 0 14px 36px rgba(15, 23, 42, .10);
+  <style>
+    :root{
+      --ink:#0b1020;
+      --muted:#6b7280;
+      --stroke: rgba(15,23,42,.10);
+      --card: rgba(255,255,255,.72);
+      --shadow2: 0 14px 36px rgba(15,23,42,.10);
 
-            --p1: #a855f7;
-            --p2: #ec4899;
+      --p1:#a855f7;
+      --p2:#ec4899;
 
-            --r: 26px;
-            --r2: 18px;
-        }
+      --r: 26px;
+      --r2: 18px;
 
-        * {
-            box-sizing: border-box;
-        }
+      --ease: cubic-bezier(.2,.9,.2,1);
+    }
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 800px at 50% -240px, rgba(168,85,247,.22), transparent 58%),
+        radial-gradient(900px 700px at 80% 10%, rgba(236,72,153,.16), transparent 55%),
+        radial-gradient(800px 650px at 10% 34%, rgba(192,132,252,.16), transparent 55%),
+        linear-gradient(#fff, #fff);
+      overflow-x:hidden;
+    }
+    .wrap{ max-width:1040px; margin:0 auto; padding:26px 18px 54px; }
 
-        html,
-        body {
-            height: 100%;
-        }
+    .topbar{
+      position: sticky; top: 14px; z-index: 10;
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding:12px;
+      border:1px solid var(--stroke);
+      border-radius:20px;
+      background: rgba(255,255,255,.68);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow2);
+      animation: dropIn .6s var(--ease) both;
+    }
+    @keyframes dropIn{ from{ opacity:0; transform: translateY(-10px);} to{opacity:1; transform: translateY(0);} }
 
-        body {
-            margin: 0;
-            font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-            color: var(--ink);
-            background:
-                radial-gradient(1200px 800px at 50% -240px, rgba(168, 85, 247, .22), transparent 58%),
-                radial-gradient(900px 700px at 80% 10%, rgba(236, 72, 153, .16), transparent 55%),
-                radial-gradient(800px 650px at 10% 34%, rgba(192, 132, 252, .16), transparent 55%),
-                linear-gradient(#fff, #fff);
-            overflow-x: hidden;
-        }
+    .brand{ display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit; min-width:190px; }
+    .logo{
+      width:40px; height:40px; border-radius:14px;
+      background:
+        radial-gradient(60% 60% at 30% 25%, rgba(255,255,255,.85), rgba(255,255,255,0) 55%),
+        linear-gradient(135deg, var(--p1), var(--p2));
+      box-shadow: 0 18px 46px rgba(168,85,247,.30);
+      position: relative;
+      overflow:hidden;
+    }
+    .logo:before{
+      content:"";
+      position:absolute; inset:-20px;
+      background: conic-gradient(from 220deg, rgba(255,255,255,.0), rgba(255,255,255,.45), rgba(255,255,255,.0));
+      animation: spin 7s linear infinite;
+      opacity:.55;
+    }
+    @keyframes spin{ to{ transform: rotate(360deg); } }
 
-        .wrap {
-            max-width: 1040px;
-            margin: 0 auto;
-            padding: 26px 18px 54px;
-        }
+    .brand .t{ display:flex; flex-direction:column; line-height:1.1; }
+    .brand .t b{ font-size:14px; letter-spacing:.2px; }
+    .brand .t span{ font-size:12px; color:var(--muted); font-weight:650; margin-top:2px; }
 
-        .topbar {
-            position: sticky;
-            top: 14px;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            padding: 12px;
-            border: 1px solid var(--stroke);
-            border-radius: 20px;
-            background: rgba(255, 255, 255, .68);
-            backdrop-filter: blur(12px);
-            box-shadow: var(--shadow2);
-        }
+    .nav{ display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end; }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 12px; border-radius:999px;
+      border:1px solid rgba(15,23,42,.10);
+      background: rgba(255,255,255,.72);
+      text-decoration:none; color: rgba(11,16,32,.92);
+      font-weight:850; font-size:13px;
+      transition: transform .18s var(--ease), box-shadow .18s var(--ease), background .18s var(--ease), border-color .18s var(--ease);
+      will-change: transform;
+    }
+    .pill:hover{ transform: translateY(-1px); box-shadow: 0 12px 26px rgba(15,23,42,.12); background: rgba(255,255,255,.92); border-color: rgba(168,85,247,.20); }
+    .pill[aria-current="page"]{ border-color: rgba(168,85,247,.35); background: linear-gradient(135deg, rgba(168,85,247,.14), rgba(236,72,153,.12)); }
 
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: inherit;
-            min-width: 190px;
-        }
+    .hero{ padding:26px 8px 6px; text-align:center; animation: fadeUp .7s var(--ease) .08s both; }
+    @keyframes fadeUp{ from{ opacity:0; transform: translateY(10px);} to{ opacity:1; transform: translateY(0);} }
 
-        .logo {
-            width: 40px;
-            height: 40px;
-            border-radius: 14px;
-            background:
-                radial-gradient(60% 60% at 30% 25%, rgba(255, 255, 255, .85), rgba(255, 255, 255, 0) 55%),
-                linear-gradient(135deg, var(--p1), var(--p2));
-            box-shadow: 0 18px 46px rgba(168, 85, 247, .30);
-        }
+    .orb{
+      width:74px; height:74px; border-radius:999px; margin: 10px auto 10px;
+      background:
+        radial-gradient(70% 70% at 30% 25%, rgba(255,255,255,.85), rgba(255,255,255,0) 55%),
+        linear-gradient(135deg, var(--p1), var(--p2));
+      box-shadow: 0 26px 70px rgba(168,85,247,.30);
+      display:flex; align-items:center; justify-content:center;
+      position: relative;
+      overflow:hidden;
+      animation: pulseGlow 4.8s ease-in-out infinite;
+    }
+    @keyframes pulseGlow{
+      0%,100%{ box-shadow: 0 26px 70px rgba(168,85,247,.30); }
+      50%{ box-shadow: 0 30px 85px rgba(236,72,153,.26); }
+    }
+    .orb svg{ filter: drop-shadow(0 8px 18px rgba(15,23,42,.20)); }
 
-        .brand .t {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.1;
-        }
+    .title{
+      margin: 12px 0 0;
+      font-size: clamp(24px, 3.2vw, 38px);
+      font-weight: 950;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, rgba(168,85,247,1), rgba(236,72,153,1));
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .subtitle{
+      margin: 10px auto 0; max-width: 820px;
+      color: var(--muted); font-size: 14px; line-height: 1.75;
+    }
 
-        .brand .t b {
-            font-size: 14px;
-            letter-spacing: .2px;
-        }
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .card{
+      border-radius: var(--r);
+      border: 1px solid rgba(15,23,42,.10);
+      background: var(--card);
+      box-shadow: var(--shadow2);
+      backdrop-filter: blur(12px);
+      padding: 16px;
+      position: relative;
+      overflow:hidden;
 
-        .brand .t span {
-            font-size: 12px;
-            color: var(--muted);
-            font-weight: 650;
-            margin-top: 2px;
-        }
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity .6s var(--ease), transform .6s var(--ease);
+    }
+    .card.in{ opacity: 1; transform: translateY(0); }
+    .card:before{
+      content:"";
+      position:absolute; inset:-120px;
+      background: radial-gradient(circle at 10% 10%, rgba(168,85,247,.10), transparent 40%),
+                  radial-gradient(circle at 90% 20%, rgba(236,72,153,.08), transparent 45%);
+      pointer-events:none;
+    }
+    .card > *{ position:relative; z-index:1; }
 
-        .nav {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-        }
+    .h2{
+      display:flex; align-items:center; gap: 10px;
+      margin: 0 0 10px;
+      font-size: 16px;
+      font-weight: 950;
+      letter-spacing: -0.01em;
+    }
+    .icon{
+      width: 36px; height: 36px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(168,85,247,.18), rgba(236,72,153,.14));
+      border: 1px solid rgba(168,85,247,.22);
+      display:flex; align-items:center; justify-content:center;
+      box-shadow: 0 12px 26px rgba(168,85,247,.12);
+    }
 
-        .pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 12px;
-            border-radius: 999px;
-            border: 1px solid rgba(15, 23, 42, .10);
-            background: rgba(255, 255, 255, .72);
-            text-decoration: none;
-            color: rgba(11, 16, 32, .92);
-            font-weight: 850;
-            font-size: 13px;
-            transition: transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
-        }
+    .chips{ display:flex; flex-wrap:wrap; gap:10px; margin-top: 10px; }
+    .chip{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(15,23,42,.10);
+      background: rgba(255,255,255,.74);
+      font-weight: 950;
+      box-shadow: 0 12px 26px rgba(15,23,42,.06);
+      max-width: 100%;
+    }
+    .chip code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 12px;
+      color: rgba(11,16,32,.82);
+      background: rgba(168,85,247,.10);
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(168,85,247,.18);
+      word-break: break-word;
+    }
 
-        .pill:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 12px 26px rgba(15, 23, 42, .12);
-            background: rgba(255, 255, 255, .92);
-            border-color: rgba(168, 85, 247, .20);
-        }
+    p, li{ margin:0; color: rgba(11,16,32,.82); font-size: 14px; line-height: 1.75; }
+    ul{ margin: 10px 0 0 20px; }
 
-        .pill[aria-current="page"] {
-            border-color: rgba(168, 85, 247, .35);
-            background: linear-gradient(135deg, rgba(168, 85, 247, .14), rgba(236, 72, 153, .12));
-        }
+    .actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px; }
+    .btn{
+      border:0; cursor:pointer; font-weight:950; letter-spacing:.2px;
+      padding:12px 14px; border-radius:999px;
+      display:inline-flex; align-items:center; gap:10px;
+      text-decoration:none;
+      transition: transform .18s var(--ease), box-shadow .18s var(--ease), filter .18s var(--ease);
+      user-select:none;
+      will-change: transform;
+    }
+    .btn-primary{ color:#fff; background: linear-gradient(135deg, var(--p1), var(--p2)); box-shadow: 0 20px 46px rgba(168,85,247,.22); }
+    .btn-primary:hover{ transform: translateY(-1px); filter: brightness(1.02); }
+    .btn-ghost{
+      color: rgba(11,16,32,.90);
+      background: rgba(255,255,255,.74);
+      border: 1px solid rgba(15,23,42,.10);
+      box-shadow: 0 12px 28px rgba(15,23,42,.10);
+    }
+    .btn-ghost:hover{ transform: translateY(-1px); }
 
-        .hero {
-            padding: 26px 8px 6px;
-            text-align: center;
-        }
+    .note{
+      margin-top: 10px;
+      padding: 12px 12px;
+      border-radius: 18px;
+      border: 1px dashed rgba(15,23,42,.14);
+      background: rgba(255,255,255,.62);
+      color: rgba(11,16,32,.78);
+      font-size: 13px;
+      line-height: 1.7;
+    }
 
-        .orb {
-            width: 74px;
-            height: 74px;
-            border-radius: 999px;
-            margin: 10px auto 10px;
-            background:
-                radial-gradient(70% 70% at 30% 25%, rgba(255, 255, 255, .85), rgba(255, 255, 255, 0) 55%),
-                linear-gradient(135deg, var(--p1), var(--p2));
-            box-shadow: 0 26px 70px rgba(168, 85, 247, .30);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    .toast{
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      padding: 12px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(15,23,42,.12);
+      background: rgba(255,255,255,.86);
+      box-shadow: 0 22px 70px rgba(15,23,42,.18);
+      backdrop-filter: blur(12px);
+      font-weight: 950;
+      font-size: 13px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .18s var(--ease), transform .18s var(--ease);
+    }
+    .toast.show{ opacity: 1; transform: translateX(-50%) translateY(-2px); }
 
-        .orb svg {
-            filter: drop-shadow(0 8px 18px rgba(15, 23, 42, .20));
-        }
+    .footer{
+      margin-top: 18px;
+      text-align:center;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+      padding: 16px 6px 0;
+      animation: fadeUp .7s var(--ease) .12s both;
+    }
+    .footer a{ color: rgba(11,16,32,.76); text-decoration:none; border-bottom: 1px dashed rgba(11,16,32,.28); }
 
-        .title {
-            margin: 12px 0 0;
-            font-size: clamp(24px, 3.2vw, 38px);
-            font-weight: 950;
-            letter-spacing: -0.03em;
-            background: linear-gradient(135deg, rgba(168, 85, 247, 1), rgba(236, 72, 153, 1));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .subtitle {
-            margin: 10px auto 0;
-            max-width: 780px;
-            color: var(--muted);
-            font-size: 14px;
-            line-height: 1.7;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 14px;
-            margin-top: 18px;
-        }
-
-        .card {
-            border-radius: var(--r);
-            border: 1px solid rgba(15, 23, 42, .10);
-            background: var(--card);
-            box-shadow: var(--shadow2);
-            backdrop-filter: blur(12px);
-            padding: 16px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card:before {
-            content: "";
-            position: absolute;
-            inset: -120px;
-            background: radial-gradient(circle at 10% 10%, rgba(168, 85, 247, .10), transparent 40%),
-                radial-gradient(circle at 90% 20%, rgba(236, 72, 153, .08), transparent 45%);
-            pointer-events: none;
-        }
-
-        .card>* {
-            position: relative;
-            z-index: 1;
-        }
-
-        .h2 {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 0 0 10px;
-            font-size: 16px;
-            font-weight: 950;
-            letter-spacing: -0.01em;
-        }
-
-        .icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 14px;
-            background: linear-gradient(135deg, rgba(168, 85, 247, .18), rgba(236, 72, 153, .14));
-            border: 1px solid rgba(168, 85, 247, .22);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 12px 26px rgba(168, 85, 247, .12);
-        }
-
-        .chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 12px;
-            border-radius: 999px;
-            border: 1px solid rgba(15, 23, 42, .10);
-            background: rgba(255, 255, 255, .74);
-            font-weight: 950;
-            box-shadow: 0 12px 26px rgba(15, 23, 42, .06);
-            max-width: 100%;
-        }
-
-        .chip code {
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-            font-size: 12px;
-            color: rgba(11, 16, 32, .82);
-            background: rgba(168, 85, 247, .10);
-            padding: 2px 8px;
-            border-radius: 999px;
-            border: 1px solid rgba(168, 85, 247, .18);
-            word-break: break-word;
-        }
-
-        p,
-        li {
-            margin: 0;
-            color: rgba(11, 16, 32, .82);
-            font-size: 14px;
-            line-height: 1.75;
-        }
-
-        ul {
-            margin: 10px 0 0 20px;
-        }
-
-        .actions {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-top: 12px;
-        }
-
-        .btn {
-            border: 0;
-            cursor: pointer;
-            font-weight: 950;
-            letter-spacing: .2px;
-            padding: 12px 14px;
-            border-radius: 999px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
-            user-select: none;
-        }
-
-        .btn-primary {
-            color: #fff;
-            background: linear-gradient(135deg, var(--p1), var(--p2));
-            box-shadow: 0 20px 46px rgba(168, 85, 247, .22);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-1px);
-            filter: brightness(1.02);
-        }
-
-        .btn-ghost {
-            color: rgba(11, 16, 32, .90);
-            background: rgba(255, 255, 255, .74);
-            border: 1px solid rgba(15, 23, 42, .10);
-            box-shadow: 0 12px 28px rgba(15, 23, 42, .10);
-        }
-
-        .btn-ghost:hover {
-            transform: translateY(-1px);
-        }
-
-        .note {
-            margin-top: 10px;
-            padding: 12px 12px;
-            border-radius: 18px;
-            border: 1px dashed rgba(15, 23, 42, .14);
-            background: rgba(255, 255, 255, .62);
-            color: rgba(11, 16, 32, .78);
-            font-size: 13px;
-            line-height: 1.7;
-        }
-
-        .toast {
-            position: fixed;
-            left: 50%;
-            bottom: 18px;
-            transform: translateX(-50%);
-            padding: 12px 14px;
-            border-radius: 999px;
-            border: 1px solid rgba(15, 23, 42, .12);
-            background: rgba(255, 255, 255, .86);
-            box-shadow: 0 22px 70px rgba(15, 23, 42, .18);
-            backdrop-filter: blur(12px);
-            font-weight: 950;
-            font-size: 13px;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity .18s ease, transform .18s ease;
-        }
-
-        .toast.show {
-            opacity: 1;
-            transform: translateX(-50%) translateY(-2px);
-        }
-
-        @media (min-width: 900px) {
-            .grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .wide {
-                grid-column: 1 / -1;
-            }
-        }
-    </style>
+    @media (min-width: 900px){
+      .grid{ grid-template-columns: 1fr 1fr; }
+      .wide{ grid-column: 1 / -1; }
+    }
+    @media (prefers-reduced-motion: reduce){
+      .logo:before, .orb{ animation:none; }
+      .pill,.btn,.card{ transition:none !important; }
+      .topbar,.hero,.footer{ animation:none !important; }
+    }
+  </style>
 </head>
 
 <body>
-    <div class="wrap">
-        <header class="topbar">
-            <a class="brand" href="../support/">
-                <div class="logo" aria-hidden="true"></div>
-                <div class="t"><b>WingChat</b><span>Centro legal</span></div>
-            </a>
+  <div class="wrap">
+    <header class="topbar">
+      <a class="brand" href="../support/">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="t"><b>WingChat</b><span>Centro legal</span></div>
+      </a>
 
-            <nav class="nav" aria-label="Navegación">
-                <a class="pill" href="../privacy/">🔒 Privacidad</a>
-                <a class="pill" href="../terms/">📜 Términos</a>
-                <a class="pill" aria-current="page" href="../support/">💬 Soporte</a>
-            </nav>
-        </header>
+      <nav class="nav" aria-label="Navegación">
+        <a class="pill" href="../privacy/">🔒 Privacidad</a>
+        <a class="pill" href="../terms/">📜 Términos</a>
+        <a class="pill" aria-current="page" href="../support/">💬 Soporte</a>
+      </nav>
+    </header>
 
-        <section class="hero">
-            <div class="orb" aria-hidden="true">
-                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path
-                        d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.42 0-2.76-.35-3.94-.97L3 21l1.58-4.56A8.47 8.47 0 0 1 3.5 11.5 8.5 8.5 0 0 1 12 3a8.5 8.5 0 0 1 9 8.5Z"
-                        stroke="white" stroke-width="2" stroke-linejoin="round" />
-                </svg>
-            </div>
+    <section class="hero">
+      <div class="orb" aria-hidden="true">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.42 0-2.76-.35-3.94-.97L3 21l1.58-4.56A8.47 8.47 0 0 1 3.5 11.5 8.5 8.5 0 0 1 12 3a8.5 8.5 0 0 1 9 8.5Z"
+                stroke="white" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+      </div>
 
-            <h1 class="title">Soporte</h1>
-            <p class="subtitle">
-                ¿Tu compra no se reflejó o tienes dudas? Te atendemos con velocidad y precisión.
-                Aquí lo importante es cerrar el ciclo: datos → diagnóstico → solución.
-            </p>
-        </section>
+      <h1 class="title">Soporte</h1>
+      <p class="subtitle">
+        ¿Tu compra no se reflejó, tienes dudas o algo “no cuadra”? Aquí vamos directo a solución: datos → diagnóstico → cierre.
+      </p>
+    </section>
 
-        <main class="grid">
-            <article class="card">
-                <div class="h2"><span class="icon">📫</span> Contacto</div>
+    <main class="grid">
+      <article class="card">
+        <div class="h2"><span class="icon">📫</span> Contacto</div>
 
-                <div class="chips">
-                    <span class="chip">📧 <code id="emailText">tristanvalentinarzatecayetano@gmail.com</code></span>
-                    <span class="chip">📱 <code id="waText">+52XXXXXXXXXX</code></span>
-                </div>
+        <div class="chips">
+          <span class="chip">📧 <code id="emailText">tristanvalentinarzatecayetano@gmail.com</code></span>
+          <span class="chip">📱 <code id="waText">+52 TU_NUMERO_AQUI</code></span>
+        </div>
 
-                <div class="actions">
-                    <button class="btn btn-primary" id="copyEmailBtn" type="button">✨ Copiar correo</button>
-                    <a class="btn btn-ghost" id="mailBtn" href="#">📩 Enviar email</a>
-                    <a class="btn btn-ghost" id="waBtn" href="#" rel="noopener">💬 WhatsApp</a>
-                </div>
+        <div class="actions">
+          <button class="btn btn-primary" id="copyEmailBtn" type="button">✨ Copiar correo</button>
+          <a class="btn btn-ghost" id="mailBtn" href="#">📩 Enviar email</a>
+          <a class="btn btn-ghost" id="waBtn" href="#" rel="noopener">💬 WhatsApp</a>
+        </div>
 
-                <div class="note">
-                    Consejo de productividad: si mandas evidencias completas, tu ticket se vuelve un “caso cerrado” y no
-                    un “capítulo en progreso”.
-                </div>
-            </article>
+        <div class="note">
+          Si es tema de Premium/pago/suscripción, incluye los IDs. Eso convierte tu caso en “resuelto” en vez de “en revisión eterna”.
+        </div>
+      </article>
 
-            <article class="card">
-                <div class="h2"><span class="icon">⚡</span> Para resolver más rápido</div>
-                <p>Si el problema es de compra Premium, incluye:</p>
-                <ul>
-                    <li>Tu correo de Google (con el que iniciaste sesión)</li>
-                    <li>El <strong>paymentId</strong> de MercadoPago (si lo tienes)</li>
-                    <li>Captura de tu comprobante o estado de MercadoPago</li>
-                </ul>
-            </article>
+      <article class="card">
+        <div class="h2"><span class="icon">⚡</span> Para resolver más rápido</div>
+        <p><strong>Para resolver más rápido (envía esto en tu mensaje)</strong></p>
+        <ul>
+          <li>Tu correo de Google (con el que iniciaste sesión)</li>
+          <li>Tu <strong>UID</strong> (aparece en Perfil → Cuenta)</li>
+          <li><strong>payment_id</strong> de MercadoPago (si fue pago único)</li>
+          <li><strong>subscription_id</strong> / estado de suscripción (si fue suscripción)</li>
+          <li>Captura del comprobante o estado en MercadoPago</li>
+        </ul>
+        <div class="note">Tiempo de respuesta: lo antes posible en horario operativo.</div>
+      </article>
 
-            <article class="card wide">
-                <div class="h2"><span class="icon">🧭</span> Ruta legal</div>
-                <p>Si tu tema es privacidad o condiciones de uso, aquí están los accesos directos:</p>
-                <div class="actions">
-                    <a class="btn btn-primary" href="../privacy/">🔒 Privacidad</a>
-                    <a class="btn btn-ghost" href="../terms/">📜 Términos</a>
-                </div>
-                <div class="note">
-                    WingChat vive en la intersección de creatividad y responsabilidad. Sin marco legal, el crecimiento
-                    es ruido; con marco legal, es estrategia.
-                </div>
-            </article>
-        </main>
+      <article class="card wide">
+        <div class="h2"><span class="icon">🧭</span> Ruta legal</div>
+        <p>Si tu tema es privacidad o condiciones de uso, aquí están los accesos directos:</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="../privacy/">🔒 Privacidad</a>
+          <a class="btn btn-ghost" href="../terms/">📜 Términos</a>
+        </div>
+        <div class="note">
+          WingChat vive en la frontera entre creatividad y responsabilidad. Con marco legal, el crecimiento es estrategia.
+        </div>
+      </article>
+    </main>
 
-        <footer class="footer"
-            style="margin-top:18px; text-align:center; color:var(--muted); font-size:12px; line-height:1.7;">
-            <div>⚠️ Esta app es de entretenimiento y no sustituye consejo psicológico o profesional.</div>
-            <div style="margin-top:8px;">
-                <a href="../privacy/"
-                    style="color:rgba(11,16,32,.76); text-decoration:none; border-bottom:1px dashed rgba(11,16,32,.28);">Política
-                    de Privacidad</a>
-                &nbsp;·&nbsp;
-                <a href="../terms/"
-                    style="color:rgba(11,16,32,.76); text-decoration:none; border-bottom:1px dashed rgba(11,16,32,.28);">Términos
-                    de Uso</a>
-                &nbsp;·&nbsp;
-                <a href="../support/"
-                    style="color:rgba(11,16,32,.76); text-decoration:none; border-bottom:1px dashed rgba(11,16,32,.28);">Soporte</a>
-            </div>
-        </footer>
-    </div>
+    <footer class="footer">
+      <div>⚠️ Esta app es de entretenimiento y no sustituye consejo psicológico o profesional.</div>
+      <div style="margin-top:8px;">
+        <a href="../privacy/">Política de Privacidad</a> &nbsp;·&nbsp;
+        <a href="../terms/">Términos de Uso</a> &nbsp;·&nbsp;
+        <a href="../support/">Soporte</a>
+      </div>
+    </footer>
+  </div>
 
-    <div class="toast" id="toast">Copiado ✅</div>
+  <div class="toast" id="toast">Copiado ✅</div>
 
-    <script>
-        (function () {
-            const email = "tristanvalentinarzatecayetano@gmail.com";
+  <script>
+    (function(){
+      const email = "tristanvalentinarzatecayetano1@gmail.com";
 
-            // CAMBIA ESTO:
-            const whatsappNumber = "+52XXXXXXXXXX"; // ej: "+5272XXXXXXXX"
+      // CAMBIA ESTO:
+      const whatsappNumber = "+52 XXXXXXXXXX"; // ej: "+5272XXXXXXXX"
 
-            const toast = document.getElementById("toast");
-            const copyEmailBtn = document.getElementById("copyEmailBtn");
-            const waBtn = document.getElementById("waBtn");
-            const waText = document.getElementById("waText");
-            const mailBtn = document.getElementById("mailBtn");
+      const toast = document.getElementById("toast");
+      const copyEmailBtn = document.getElementById("copyEmailBtn");
+      const waBtn = document.getElementById("waBtn");
+      const waText = document.getElementById("waText");
+      const mailBtn = document.getElementById("mailBtn");
 
-            if (waText) waText.textContent = whatsappNumber;
+      // Reveal cards on scroll
+      const cards = Array.from(document.querySelectorAll(".card"));
+      const prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-            const waMessage = encodeURIComponent(
-                "Hola, soy usuario de WingChat. Necesito ayuda con soporte/Premium. Mi correo de Google es: _____. PaymentId (si aplica): _____."
-            );
+      if (!prefersReduced && "IntersectionObserver" in window) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach(e => {
+            if (e.isIntersecting) e.target.classList.add("in");
+          });
+        }, { threshold: 0.12 });
+        cards.forEach(c => io.observe(c));
+      } else {
+        cards.forEach(c => c.classList.add("in"));
+      }
 
-            const waLink = "https://wa.me/" + whatsappNumber.replace(/[^\d]/g, "") + "?text=" + waMessage;
-            if (waBtn) waBtn.href = waLink;
+      if (waText) waText.textContent = whatsappNumber;
 
-            const mailLink = "mailto:" + email + "?subject=" + encodeURIComponent("WingChat — Soporte") +
-                "&body=" + encodeURIComponent(
-                    "Hola. Necesito ayuda con WingChat.\n\nMi correo de Google: ____\nPaymentId (si aplica): ____\nDetalle del problema: ____\n\nGracias."
-                    );
-            if (mailBtn) mailBtn.href = mailLink;
+      const waMessage = encodeURIComponent(
+        "Hola, soy usuario de WingChat. Necesito ayuda con soporte/Premium.\n\nCorreo de Google: ____\nUID: ____\npayment_id (si aplica): ____\nsubscription_id/estado (si aplica): ____\n\nDetalle del problema: ____"
+      );
 
-            function showToast(msg) {
-                if (!toast) return;
-                toast.textContent = msg;
-                toast.classList.add("show");
-                window.clearTimeout(showToast._t);
-                showToast._t = window.setTimeout(() => toast.classList.remove("show"), 1400);
-            }
+      const waLink = "https://wa.me/" + whatsappNumber.replace(/[^\d]/g,"") + "?text=" + waMessage;
+      if (waBtn) waBtn.href = waLink;
 
-            if (copyEmailBtn) {
-                copyEmailBtn.addEventListener("click", async () => {
-                    try {
-                        await navigator.clipboard.writeText(email);
-                        showToast("Correo copiado ✅");
-                    } catch (e) {
-                        const ta = document.createElement("textarea");
-                        ta.value = email;
-                        document.body.appendChild(ta);
-                        ta.select();
-                        document.execCommand("copy");
-                        ta.remove();
-                        showToast("Correo copiado ✅");
-                    }
-                });
-            }
-        })();
-    </script>
+      const mailLink = "mailto:" + email
+        + "?subject=" + encodeURIComponent("WingChat — Soporte")
+        + "&body=" + encodeURIComponent(
+          "Hola. Necesito ayuda con WingChat.\n\nCorreo de Google: ____\nUID: ____\npayment_id (si aplica): ____\nsubscription_id/estado (si aplica): ____\nDetalle del problema: ____\n\nGracias."
+        );
+      if (mailBtn) mailBtn.href = mailLink;
+
+      function showToast(msg){
+        if (!toast) return;
+        toast.textContent = msg;
+        toast.classList.add("show");
+        window.clearTimeout(showToast._t);
+        showToast._t = window.setTimeout(() => toast.classList.remove("show"), 1400);
+      }
+
+      if (copyEmailBtn) {
+        copyEmailBtn.addEventListener("click", async () => {
+          try{
+            await navigator.clipboard.writeText(email);
+            showToast("Correo copiado ✅");
+          } catch(e){
+            const ta = document.createElement("textarea");
+            ta.value = email;
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand("copy");
+            ta.remove();
+            showToast("Correo copiado ✅");
+          }
+        });
+      }
+    })();
+  </script>
 </body>
-
 </html>
